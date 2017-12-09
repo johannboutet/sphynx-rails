@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126001643) do
+ActiveRecord::Schema.define(version: 20171209230423) do
+
+  create_table "auth_providers", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider", "uid"], name: "index_auth_providers_on_provider_and_uid", unique: true
+    t.index ["provider", "user_id"], name: "index_auth_providers_on_provider_and_user_id", unique: true
+    t.index ["user_id"], name: "index_auth_providers_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"

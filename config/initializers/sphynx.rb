@@ -3,6 +3,9 @@ Sphynx.configure do |config|
   config.revocation_requests = [['GET', /^logout$/]]
   config.secret = '67e5e24a546b607cbecc962a62a6db5b5ccf5a9aac22f1fd7ab40e1c085b88c7151259cabe08988688a941a1fc388355ca0db93a4e362c3939999f70279f2d7e'
   config.scopes = {
-    user: { repository: User }
+    user: {
+      user_class: User,
+      provider_class: AuthProvider
+    }
   }
 end
